@@ -72,8 +72,27 @@ Após a execução do passo acima, para obter o melhor caminho na malha viária,
   - Buscar melhor rota
    -  `curl -H "Content-Type: application/json" -X GET localhost:2223/v1/buscaRota?{origem}{destino}{mapa}{valorLitro}{autonomia}`
 
+O retorno será assim: 
+
+         {
+           "locais": [
+             "A",
+             "C",
+             "D",
+             "N*"
+           ],
+           "distancia": distanciaTotal,
+           "custo": custo da viagem
+         }
+
 
 #HOW-TO
+
+Por padrão o highwayNetwork será startado na porta 2222 - [configuração](https://github.com/xild/highwaymicroservices/blob/master/highwaynetwork/src/main/resources/highway-services.yaml)
+
+Highwaypath na porta 2223 - [configuração](https://github.com/xild/highwaymicroservices/blob/master/highwaypath/src/main/resources/highwaypath-services.yaml)
+
+E o serviço de registro na porta 111 - [configuração](https://github.com/xild/highwaymicroservices/blob/master/microservices-support/src/main/resources/registration-server.yml)
 
 Para rodar o projeto executar os comandos abaixo em ordem:
 

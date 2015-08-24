@@ -190,9 +190,9 @@ public class PathControllerTest{
             .get(BUSCA_ROTA)
          .then()
             .statusCode(HttpStatus.SC_OK)
-            .body("custo", is(6.25f))
-            .body("distancia", is(25.0f))
-            .body("locais", hasItems("A","B","D")); 
+            .body("custo", is(12.50f))
+            .body("distancia", is(50.0f))
+            .body("locais", hasItems("A","C","D")); 
         
     }
     

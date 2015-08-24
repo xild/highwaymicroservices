@@ -78,21 +78,22 @@ Após a execução do passo acima, para obter o melhor caminho na malha viária,
 Para rodar o projeto executar os comandos abaixo em ordem:
 
 - Microservices Support 
-`cd microservices-support`
-`mvn clean package`
-`cd /target`
-`java -jar microservices.support-0.0.1-SNAPSHOT.jar`
+ - cd microservices-support
+  - mvn clean package
+  - cd /target
+  - java -jar microservices.support-0.0.1-SNAPSHOT.jar`
 
 - HighwayNetwork
-- `cd highwaynetwork`
-- `mvn clean package`
-- `cd /target`
-- `java -jar highwaynetwork-0.0.1-SNAPSHOT.jar`
-- 
--HighwayPath
-- `cd highwaypath`
-- `mvn clean package`
-- `cd /target`
-- `java -jar highwaypath-0.0.1-SNAPSHOT.jar`
+ - cd highwaynetwork
+ - mvn clean package
+ - cd /target
+ - java -jar highwaynetwork-0.0.1-SNAPSHOT.jar`
+
+ 
+- HighwayPath
+ - cd highwaypath
+ - mvn clean package
+ - cd /target
+ - java -jar highwaypath-0.0.1-SNAPSHOT.jar`
 
 

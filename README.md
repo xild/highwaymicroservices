@@ -1,11 +1,36 @@
 # MicroServices de Logística
-O projeto está dividido em três partes que são descritas abaixo: 
+#Arquitetura
+
+A ideia arquitetural é de compor os sistemas através de [microservices] (http://martinfowler.com/articles/microservices.html)
+
+A motivação de utilizar essa arquitetura é de que fica fácil caso surja a necessidade de escalar a aplicação. Para isso só seria necessário criar uma classe que encapsulasse a leitura de qualquer um dos serviços via RMI. 
+
+O projeto #[HighwayNetwork](https://github.com/xild/highwaymicroservices/tree/master/highwaynetwork) faz o cadastro da malha viária em uma base H2-SQL e logo em seguida efetua uma chamada utilizando RMI para o serviço [buscaRota]((https://github.com/xild/highwaymicroservices/tree/master/highwaypath)) (Para cadastrar a malha viária no Neo4j) . Isso significa que se o jar com o tomcat fosse executado em 10 portas diferentes o próprio #[Microservices-Support](https://github.com/xild/highwaymicroservices/tree/master/microservices-support) faria o LoadBalance da aplicação.
+
+Exemplo: 
+         
+         `java -jar microservices.support-0.0.1-SNAPSHOT.jar`
+         
+         `java -jar highwaynetwork-0.0.1-SNAPSHOT.jar 2224`
+         
+         `java -jar highwaynetwork-0.0.1-SNAPSHOT.jar 2225`
+         
+         `java -jar highwaynetwork-0.0.1-SNAPSHOT.jar 2226`
+         
+         `java -jar highwaynetwork-0.0.1-SNAPSHOT.jar 2226`
+Todo mundo que acessar a url do RMI http://highwaynetwork-services/  teria disponível todas essas instâncias.
+
+
+O projeto está dividido em três partes que são 
 
 #[Microservices-Support](https://github.com/xild/highwaymicroservices/tree/master/microservices-support)
 
-Projeto que serve como um registrador dos serviços da aplicação como um todo. Os serviços independentes precisam se comunicar e isso é feito através da biblioteca do netflix Eureka. 
 
-Mais de um serviço pode ser inicilizado que todo acesso que ocorrer via RMI terá um loadbalance feito.
+A principal utilização desse projeto é que quando temos vários processos trabalhando em um conjunto precisamos achar um ou outro.
+Esse pequeno projeto serve como o "Descobridor" de todos os serviços startados e os serviços conversam entre si via RMI.
+
+Ele faz uso da biblioteca Spring Cloud e principalmente do recurso disponibilizado pela Netflix 
+chamado "Eureka". 
 
 #[HighwayNetwork](https://github.com/xild/highwaymicroservices/tree/master/highwaynetwork)
 
@@ -50,5 +75,24 @@ Após a execução do passo acima, para obter o melhor caminho na malha viária,
 
 #HOW-TO
 
-Para rodar o projeto a maneira mais fácil é executar o arquivo bat "runServices.bat"
+Para rodar o projeto executar os comandos abaixo em ordem:
+
+- Microservices Support 
+`cd microservices-support`
+`mvn clean package`
+`cd /target`
+`java -jar microservices.support-0.0.1-SNAPSHOT.jar`
+
+- HighwayNetwork
+- `cd highwaynetwork`
+- `mvn clean package`
+- `cd /target`
+- `java -jar highwaynetwork-0.0.1-SNAPSHOT.jar`
+- 
+-HighwayPath
+- `cd highwaypath`
+- `mvn clean package`
+- `cd /target`
+- `java -jar highwaypath-0.0.1-SNAPSHOT.jar`
+
 

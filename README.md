@@ -116,3 +116,10 @@ Para rodar o projeto executar os comandos abaixo em ordem:
  - java -jar highwaypath-0.0.1-SNAPSHOT.jar`
 
 
+#Próximos Objetivos
+
+1. Linkar projeto com o Jenkins no CloudFoundry e fazer o deploy do mesmo na nuvem. 
+2. Criar classes de encapsulamento dos serviços para melhor utilização ddos recursos do Ribbon
+
+
+

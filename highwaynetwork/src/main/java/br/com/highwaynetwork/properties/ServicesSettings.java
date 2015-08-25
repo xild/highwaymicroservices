@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix="highway")
 public class ServicesSettings {
 	
-	private String highwaypath;
+    private String highwaypath;
 
     public String getHighwaypath() {
         return highwaypath;
@@ -16,6 +16,4 @@ public class ServicesSettings {
     public void setHighwaypath(String highwaypath) {
         this.highwaypath = highwaypath;
     }
-
-
 }

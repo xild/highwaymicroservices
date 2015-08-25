@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Import;
 public class HighwayPathServer {
 
 	public static void main(String[] args) {
-		 // Será configurado usando o highway-services.yml
-        System.setProperty("spring.config.name", "highwaypath-services");
-		SpringApplication.run(HighwayPathServer.class, args);
+	    // Será configurado usando o highwaypath-services.yml
+            System.setProperty("spring.config.name", "highwaypath-services");
+	    SpringApplication.run(HighwayPathServer.class, args);
 	}
 }

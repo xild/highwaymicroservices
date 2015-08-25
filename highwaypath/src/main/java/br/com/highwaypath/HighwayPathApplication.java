@@ -39,14 +39,6 @@ public class HighwayPathApplication extends Neo4jConfiguration {
 
     @Bean(destroyMethod = "shutdown")
     public GraphDatabaseService graphDatabaseService() {
-        /**local test
-         * need to set env vars
-         * */
-        String login = System.getenv("NEO4J_LOGIN");
-        String pwd = System.getenv("NEO4J_PASSWORD");
-        String url = System.getenv("NEO4J_REST_URL");
-
-        return new SpringRestGraphDatabase(url, login, pwd ) ;
-//        return new GraphDatabaseFactory().newEmbeddedDatabase("target/highway.db");
+        return new GraphDatabaseFactory().newEmbeddedDatabase("target/highway.db");
     }
 }

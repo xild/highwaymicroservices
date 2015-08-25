@@ -3,7 +3,6 @@ package br.com.highwaypath.services;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.neo4j.graphalgo.GraphAlgoFactory;
 import org.neo4j.graphalgo.PathFinder;
 import org.neo4j.graphdb.Direction;
@@ -16,7 +15,6 @@ import org.springframework.data.neo4j.support.Neo4jTemplate;
 import org.springframework.data.neo4j.template.Neo4jOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.com.highwaypath.exception.RelationshipInvalidException;
 import br.com.highwaypath.model.Grafo;
 import br.com.highwaypath.model.PathResult;
@@ -42,7 +40,6 @@ public class PathServices {
     public int criarNodes(Grafo grafo){
         int quantidade = 0;
       
-        
         for(Vertice v: grafo.getVertices()){
             LocalNode localOrigem = new LocalNode();
             LocalNode localDestino = new LocalNode();
@@ -57,8 +54,6 @@ public class PathServices {
         }
         
         return quantidade;
-      
-        
         
     }
     
@@ -89,7 +84,6 @@ public class PathServices {
     
     @Transactional
     public PathResult buscaMelhorCaminho(Viagem viagem) {
-        
         LocalNode origem = localRepository.findByLocalId(viagem.getMapa()+"_"+viagem.getOrigem()); 
         LocalNode destino = localRepository.findByLocalId(viagem.getMapa()+"_"+viagem.getDestino());
         
@@ -98,8 +92,6 @@ public class PathServices {
         Node origemNode = template.getGraphDatabase().getNodeById(origem.getId());
         Node destinoNode = template.getGraphDatabase().getNodeById(destino.getId());
         
-                
-//        Iterable<Path> findAllPaths = finder.findAllPaths(origemNode, destinoNode);
         Path findSinglePath = finder.findSinglePath(origemNode,  destinoNode);
         PathResult pathResult = new PathResult();
         List<String> rotas = new ArrayList<String>();
@@ -128,6 +120,4 @@ public class PathServices {
         BigDecimal resultado = (valorLitro.multiply(dist)).divide(auto);
         return resultado;
     }
-    
-
 }

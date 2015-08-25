@@ -26,10 +26,10 @@ import br.com.highwaypath.services.PathServices;
 @RequestMapping(value = "v1/buscaRota")
 public class PathController {
 	
-	private final Logger logger = LoggerFactory.getLogger(PathController.class);
+     private final Logger logger = LoggerFactory.getLogger(PathController.class);
 	
-	@Autowired
-	private PathServices services;
+     @Autowired
+     private PathServices services;
 	
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
@@ -42,6 +42,5 @@ public class PathController {
     public PathResult buscaRota(@Validated Viagem viagem){
         return services.buscaMelhorCaminho(viagem);
     }
-	
 	
 }

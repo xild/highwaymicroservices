@@ -16,16 +16,15 @@ public class HighwayApplication {
 	 * @param args
 	 * Program arguments - ignored.
 	 */
-	public static void main(String[] args) {
-		SpringApplication.run(HighwayApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HighwayApplication.class, args);
+    }
 	
-	
-	@Bean(name = "messageSource")
-	public ReloadableResourceBundleMessageSource messageSource() {
-	  ReloadableResourceBundleMessageSource messageBundle = new ReloadableResourceBundleMessageSource();
-	  messageBundle.setBasename("classpath:messages");
-	  messageBundle.setDefaultEncoding("UTF-8");
-	  return messageBundle;
-	}
+    @Bean(name = "messageSource")
+    public ReloadableResourceBundleMessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageBundle = new ReloadableResourceBundleMessageSource();
+        messageBundle.setBasename("classpath:messages");
+        messageBundle.setDefaultEncoding("UTF-8");
+        return messageBundle;
+    }
 }

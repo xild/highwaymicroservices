@@ -16,10 +16,5 @@ import br.com.highwaypath.model.neo4j.LocalNode;
 
 public interface LocalRepository extends  CrudRepository<LocalNode, String> {
     LocalNode findByLocalId(@Param("0") String localId);
-    
-    @Query("MATCH (p1:LocalNode {localId: {0}}), (p2:LocalNode {localId: {1}}), "+
-            "path = shortestpath((p1)-[:FROM_TO*]-(p2)) "+
-            "RETURN path")
-    Object buscaMelhorCaminho(@Param("0") String localIdOrigem, @Param("1") String localIdDestino);
 }
 

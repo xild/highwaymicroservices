@@ -96,15 +96,15 @@ public class PathServices {
         PathResult pathResult = new PathResult();
         List<String> rotas = new ArrayList<String>();
         
-            for (Node node : findSinglePath.nodes()) {
-                LocalNode convert = neo4jop.convert(node, LocalNode.class);
-                rotas.add(convert.getLocalId().split("_")[1]);
-            }
+        for (Node node : findSinglePath.nodes()) {
+            LocalNode convert = neo4jop.convert(node, LocalNode.class);
+            rotas.add(convert.getLocalId().split("_")[1]);
+        }
             
-            for (Relationship relationship : findSinglePath.relationships()) {
-                DistanciaRelationship convert = neo4jop.convert(relationship, DistanciaRelationship.class);
-                pathResult.setDistancia(pathResult.getDistancia() + convert.getDistancia());
-            }
+        for (Relationship relationship : findSinglePath.relationships()) {
+            DistanciaRelationship convert = neo4jop.convert(relationship, DistanciaRelationship.class);
+            pathResult.setDistancia(pathResult.getDistancia() + convert.getDistancia());
+        }
         
         pathResult.setLocais(rotas);
         pathResult.setCusto(calcularCusto(viagem.getAutonomia(), viagem.getValorLitro(), pathResult.getDistancia()));
